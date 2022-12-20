@@ -39,6 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'tasks',
      'social_django',
+    'django_otp',
+    'django_otp.plugins.otp_totp',
+
+
 ]
 
 MIDDLEWARE = [
@@ -50,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
       'social_django.middleware.SocialAuthExceptionMiddleware',
+        'django_otp.middleware.OTPMiddleware',
 ]
 
 ROOT_URLCONF = 'todo.urls'
