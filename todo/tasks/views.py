@@ -6,7 +6,9 @@ from .forms import *
 
 from django.core.mail import send_mail
 # Create your views here.
-
+from .models import Book
+from .serializers import BookSerailzer
+from rest_framework import generics
 def index(request):
 	tasks = Task.objects.all()
 
@@ -93,4 +95,17 @@ def login(request):
 def profile(request):
     users=Signup.objects.all()
     return render(request, 'profile.html', {'users':users})                   
+
+
+
+
+class BookList(generics.ListCreateAPIView):
+    queryset=Book.objects.all()
+    serializer_class=BookSerailzer
+
+
+class BookDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset=Book
+    serializer_class=BookSerailzer
+    
 

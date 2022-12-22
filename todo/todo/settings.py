@@ -41,6 +41,7 @@ INSTALLED_APPS = [
      'social_django',
     'django_otp',
     'django_otp.plugins.otp_totp',
+    'rest_framework',
 
 
 ]

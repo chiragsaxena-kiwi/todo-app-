@@ -19,6 +19,7 @@ from django_otp.admin import OTPAdminSite
 from django.contrib.auth.models import User
 from django_otp.plugins.otp_totp.models import TOTPDevice
 from django_otp.plugins.otp_totp.admin import TOTPDeviceAdmin
+from tasks.views import BookList,BookDetail
 
 admin.site.site_header="Chirag"
 admin.site.site_title="Saxena"
@@ -33,7 +34,9 @@ admin_site.register(TOTPDevice, TOTPDeviceAdmin)
 
 urlpatterns = [
     path('admin/', admin_site.urls),
-      path('dadmin/', admin.site.urls),
+    path('api/books',BookList.as_view()),
+    path('api/books/<int:pk>',BookDetail.as_view()),
+    path('dadmin/', admin.site.urls),
     path('',include('tasks.urls')),
     path('oauth/', include('social_django.urls', namespace='social')),  # <-- here
 
